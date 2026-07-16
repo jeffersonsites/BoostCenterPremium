@@ -13,6 +13,23 @@ box-sizing:border-box;
 font-family:Segoe UI,sans-serif;
 }
 
+body::before{
+content:"";
+position:fixed;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:radial-gradient(circle,#00ffaa22 0%,transparent 60%);
+animation:girar 25s linear infinite;
+z-index:-1;
+}
+
+@keyframes girar{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+  
 body{
 background:#07131d;
 color:#fff;
@@ -80,6 +97,16 @@ transition:.3s;
 transform:scale(1.05);
 }
 
+.btn{
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(0,255,170,.6);}
+70%{box-shadow:0 0 0 20px rgba(0,255,170,0);}
+100%{box-shadow:0 0 0 0 rgba(0,255,170,0);}
+}
+  
 .cards{
 max-width:1100px;
 margin:auto;
@@ -99,6 +126,15 @@ border:1px solid #00ffaa33;
 .card h3{
 color:#00ffaa;
 margin-bottom:15px;
+}
+
+  .card{
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 0 25px #00ffaa33;
 }
 
 .download{
