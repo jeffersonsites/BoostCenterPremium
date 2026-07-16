@@ -1,521 +1,243 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BoostCenter Premium</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BoostCenter - Download Oficial</title>
+
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}body{ font-family:'Poppins',sans-serif; background:#050816; color:white; overflow-x:hidden; word-wrap:break-word; }
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
 
-body::before{ content:""; position:fixed; width:100%; height:100%; background:radial-gradient(circle at center, rgba(0,255,170,0.12), transparent 60%); z-index:-1; }
+body{
+background:#07131d;
+color:#fff;
+}
 
-header{ padding:30px 8%; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(0,255,170,0.15); backdrop-filter:blur(10px); }
+header{
+padding:25px;
+text-align:center;
+background:#0d1f2c;
+border-bottom:1px solid #00ffaa44;
+}
 
-.logo{ font-family:'Orbitron',sans-serif; font-size:28px; color:#00ffaa; text-shadow:0 0 15px #00ffaa; }
+header h1{
+color:#00ffaa;
+font-size:42px;
+}
 
-nav a{ color:white; text-decoration:none; margin-left:25px; transition:0.3s; }
+header p{
+margin-top:10px;
+color:#cfcfcf;
+}
 
-nav a:hover{ color:#00ffaa; }
+.hero{
+max-width:1000px;
+margin:auto;
+padding:70px 20px;
+text-align:center;
+}
 
-.hero{ min-height:90vh; display:flex; align-items:center; justify-content:space-between; padding:60px 8%; gap:40px; }
+.version{
+display:inline-block;
+padding:12px 22px;
+background:#10232e;
+border:1px solid #00ffaa55;
+border-radius:30px;
+color:#00ffaa;
+margin-bottom:30px;
+font-weight:bold;
+}
 
-.hero-text{ max-width:600px; }
+.hero h2{
+font-size:48px;
+margin-bottom:20px;
+}
 
-.hero-text{ width:100%; }
+.hero p{
+font-size:18px;
+color:#d0d0d0;
+line-height:1.8;
+margin-bottom:35px;
+}
 
-.hero-text h1{ font-family:'Orbitron',sans-serif; font-size:64px; line-height:1.1; margin-bottom:25px; color:#00ffaa; text-shadow:0 0 20px rgba(0,255,170,0.5); }
+.btn{
+display:inline-block;
+background:#00ffaa;
+color:#07131d;
+padding:18px 45px;
+text-decoration:none;
+font-weight:bold;
+border-radius:12px;
+transition:.3s;
+}
 
-.hero-text p{ max-width:100%; font-size:18px; color:#cfcfcf; line-height:1.7; margin-bottom:35px; }
+.btn:hover{
+transform:scale(1.05);
+}
 
-.btn{ display:inline-block; padding:16px 34px; border:2px solid #00ffaa; border-radius:12px; color:#00ffaa; text-decoration:none; font-weight:600; transition:0.3s; box-shadow:0 0 20px rgba(0,255,170,0.2); }
+.cards{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
 
-.btn:hover{ background:#00ffaa; color:#051018; transform:translateY(-3px) scale(1.04); box-shadow:0 0 30px rgba(0,255,170,0.6); }
+.card{
+background:#10232e;
+padding:25px;
+border-radius:15px;
+border:1px solid #00ffaa33;
+}
 
-.mockup{ max-width:100%; width:520px; background:linear-gradient(145deg,#09131f,#0f2230); border:1px solid rgba(0,255,170,0.2); border-radius:20px; padding:25px; box-shadow:0 0 40px rgba(0,255,170,0.15); }
+.card h3{
+color:#00ffaa;
+margin-bottom:15px;
+}
 
-.mockup-header{ display:flex; justify-content:space-between; margin-bottom:20px; color:#00ffaa; }
+.download{
+max-width:900px;
+margin:60px auto;
+padding:40px;
+text-align:center;
+background:#10232e;
+border-radius:20px;
+border:1px solid #00ffaa55;
+}
 
-.mockup-title{ font-family:'Orbitron',sans-serif; font-size:24px; margin-bottom:20px; text-align:center; color:#00ffaa; }
+.download h2{
+color:#00ffaa;
+margin-bottom:20px;
+}
 
-.stats{ display:flex; justify-content:space-between; margin-bottom:25px; color:#00ffaa; font-weight:600; }
+.download p{
+margin-bottom:30px;
+color:#d4d4d4;
+}
 
-.grid{ display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+footer{
+padding:30px;
+text-align:center;
+color:#888;
+margin-top:50px;
+border-top:1px solid #00ffaa22;
+}
 
-.card-btn{ min-width:0; word-break:break-word; padding:18px; background:#0b1117; border:2px solid #ffcc00; border-radius:10px; text-align:center; transition:0.3s; cursor:pointer; }
-
-.card-btn:hover{ transform:scale(1.05); background:#131d26; box-shadow:0 0 20px rgba(255,204,0,0.25); }
-
-.section{ padding:90px 8%; }
-
-.section-title{ text-align:center; margin-bottom:60px; }
-
-.section-title h2{ font-size:42px; color:#00ffaa; font-family:'Orbitron',sans-serif; margin-bottom:15px; }
-
-.section-title p{ color:#bfbfbf; }
-
-.features{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
-
-.feature-box{ overflow:hidden; background:rgba(255,255,255,0.03); border:1px solid rgba(0,255,170,0.15); border-radius:18px; padding:30px; transition:0.3s; }
-
-.feature-box:hover{ transform:translateY(-8px); border-color:#00ffaa; box-shadow:0 0 25px rgba(0,255,170,0.15); }
-
-.feature-box h3{ margin-bottom:15px; color:#00ffaa; }
-
-.feature-box p{ color:#d5d5d5; line-height:1.6; }
-
-.info-area{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
-
-.info-card{ background:rgba(255,255,255,0.03); padding:35px; border-radius:18px; border:1px solid rgba(0,255,170,0.15); }
-
-.info-card h3{ color:#00ffaa; margin-bottom:20px; font-size:28px; }
-
-.info-card ul{ list-style:none; }
-
-.info-card li{ margin-bottom:15px; color:#d6d6d6; }
-
-.download{ text-align:center; padding:100px 8%; }
-
-.download-box{ max-width:800px; margin:auto; padding:50px; border-radius:25px; background:linear-gradient(145deg,#09131f,#0c1b28); border:1px solid rgba(0,255,170,0.2); box-shadow:0 0 40px rgba(0,255,170,0.15); }
-
-.download-box h2{ font-size:46px; margin-bottom:20px; color:#00ffaa; font-family:'Orbitron',sans-serif; }
-
-.download-box p{ color:#cfcfcf; margin-bottom:35px; line-height:1.7; }
-
-footer{ text-align:center; padding:35px; border-top:1px solid rgba(0,255,170,0.15); color:#9f9f9f; }
-
-@media(max-width:1000px){
-
-header{ flex-direction:column; gap:20px; text-align:center; }
-
-nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
-
-nav a{ margin-left:0; }
-
-.hero{ padding:40px 6%; }
-
-.hero-text h1{ font-size:42px; }
-
-.hero-text p{ font-size:16px; }
-
-.btn{ width:100%; text-align:center; }
-
-.grid{ grid-template-columns:1fr; }
-
-.stats{ flex-direction:column; gap:10px; align-items:center; }
-
-.download-box{ padding:30px 20px; }
-
-.download-box h2{ font-size:34px; }
-
-.section-title h2{ font-size:34px; }
-
-.feature-box{ text-align:center; }
-
-input, textarea{ font-size:15px !important; }
-
-img{ max-width:100%; height:auto; }
-
-.hero{ flex-direction:column; text-align:center; }
-
-.hero-text h1{ font-size:48px; }
-
-.mockup{ width:100%; }
-
-.info-area{ grid-template-columns:1fr; }
-
-} </style>
+img{
+width:100%;
+max-width:900px;
+border-radius:20px;
+margin-top:40px;
+box-shadow:0 0 30px #000;
+}
+</style>
 
 </head>
-<body><div style="background:#02140f;padding:10px 20px;text-align:center;color:#00ffaa;font-size:14px;border-bottom:1px solid rgba(0,255,170,0.15);">
-🚀 MAIS DE 10 FERRAMENTAS DE OTIMIZAÇÃO • 🔒 LICENÇA PREMIUM • ⚡ ATUALIZAÇÃO AUTOMÁTICA
-</div><header>
-    <div class="logo">BOOSTCENTER</div><nav>
-    <a href="#preview">Preview</a>
-    <a href="#funcoes">Funções</a>
-    <a href="#sistema">Sistema</a>
-    <a href="#comprar">Premium</a>
-    <a href="#funcoes">Funções</a>
-    <a href="#sistema">Sistema</a>
-    <a href="#download">Download</a>
-</nav>
 
-</header><section class="hero"><div class="hero-text">
+<body>
 
-    <div style="display:inline-block;padding:10px 18px;background:rgba(0,255,170,0.08);border:1px solid rgba(0,255,170,0.25);border-radius:999px;color:#00ffaa;margin-bottom:20px;font-size:14px;">
-        ⚡ SOFTWARE PREMIUM PARA WINDOWS
-    </div>
-    <h1>Painel avançado para otimização extrema</h1>
+<header>
 
-    <p>
-        BoostCenter Premium é um software avançado para Windows criado para melhorar desempenho,
-        reduzir travamentos, limpar arquivos inúteis e otimizar jogos com apenas alguns cliques.
-        
-        O painel possui sistema Premium online, atualização automática, monitor em tempo real,
-        ferramentas avançadas e visual futurista neon.
-    </p>
+<h1>BOOSTCENTER</h1>
 
-    <div style="display:flex;gap:15px;flex-wrap:wrap;margin-bottom:35px;">
+<p>Download Oficial</p>
 
-        <div style="padding:14px 20px;background:rgba(255,255,255,0.03);border-radius:14px;border:1px solid rgba(0,255,170,0.15);">
-            ⚡ Otimização Extrema
-        </div>
+</header>
 
-        <div style="padding:14px 20px;background:rgba(255,255,255,0.03);border-radius:14px;border:1px solid rgba(0,255,170,0.15);">
-            🔒 Sistema Premium
-        </div>
+<section class="hero">
 
-        <div style="padding:14px 20px;background:rgba(255,255,255,0.03);border-radius:14px;border:1px solid rgba(0,255,170,0.15);">
-            🚀 Atualização Online automática
-        </div>
-
-    </div>
-
-    <p style="font-size:15px;color:#8f8f8f;margin-top:-10px;">
-        otimização inteligente e sistema online de licença + atualização automática.
-        
-        Um projeto focado em desempenho, limpeza e controle total do sistema.
-    </p>
-
-    <div style="display:flex;gap:20px;flex-wrap:wrap;">
-        <a href="#download" class="btn">⬇ BAIXAR AGORA</a>
-        <a href="#comprar" class="btn" style="background:#00ffaa;color:#051018;">💎 COMPRAR PREMIUM</a>
-    </div>
+<div class="version">
+Versão 1.7.9.1 • Atualizada
 </div>
 
-<div class="mockup">
+<h2>Software Premium para Windows</h2>
 
-    <div class="mockup-header">
-        <span>Painel Avançado • v1.6.0</span>
-        <span>PREMIUM ATIVO</span>
-    </div>
+<p>
 
-    <div class="mockup-title">
-        BOOSTCENTER
-    </div>
+Otimize, limpe e mantenha seu Windows com apenas alguns cliques.
 
-    <div class="stats">
-        <span>CPU: 3%</span>
-        <span>RAM: 42%</span>
-    </div>
+O BoostCenter reúne ferramentas avançadas para melhorar o desempenho do sistema, jogos e estabilidade.
 
-    <div class="grid">
-        <div class="card-btn">Modo Gamer</div>
-        <div class="card-btn">Limpar Logs</div>
-        <div class="card-btn">Limpeza EXTREMA</div>
-        <div class="card-btn">Otimizar Rede</div>
-        <div class="card-btn">Info Sistema</div>
-        <div class="card-btn">Testar Internet</div>
-        <div class="card-btn">Reparar Windows</div>
-        <div class="card-btn">Ferramentas Sistema</div>
-        <div class="card-btn">Verificar Disco</div>
-        <div class="card-btn">Prioridade Jogos</div>
-    </div>
+</p>
 
+<a class="btn"
+href="SEU_LINK_MEDIAFIRE">
+⬇ BAIXAR AGORA
+</a>
+
+<img src="SUA_IMAGEM_DO_PAINEL.png">
+
+</section>
+
+<section class="cards">
+
+<div class="card">
+<h3>🧹 Limpeza Extrema</h3>
+<p>Remove arquivos desnecessários do Windows.</p>
 </div>
 
-</section><section class="section" id="funcoes"><div class="section-title">
-    <h2>FUNÇÕES DO PAINEL</h2>
-    <p>Ferramentas integradas para desempenho, limpeza e estabilidade</p>
+<div class="card">
+<h3>🎮 Modo Gamer</h3>
+<p>Mais desempenho durante seus jogos.</p>
 </div>
 
-<div class="features">
-
-    <div class="feature-box">
-        <h3>🎮 Otimização Gamer</h3>
-        <p>Melhora o desempenho durante jogos reduzindo processos desnecessários e ajustando prioridades do sistema.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>⚡ Modo Gamer</h3>
-        <p>Prioriza recursos do sistema para melhorar desempenho durante jogos e reduzir processos desnecessários.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>🧹 Limpeza EXTREMA</h3>
-        <p>Remove arquivos temporários, cache e resíduos acumulados para liberar espaço e melhorar fluidez.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>🌐 Otimização de Rede</h3>
-        <p>Aplica ajustes de conexão para melhorar estabilidade e reduzir atrasos em jogos online.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>🛠 Reparar Windows</h3>
-        <p>Executa comandos internos do Windows para corrigir arquivos corrompidos e erros do sistema.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>💾 Otimizar RAM</h3>
-        <p>Monitora e melhora o uso de memória para manter o sistema mais leve durante o uso intenso.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>📊 Monitor em Tempo Real</h3>
-        <p>Acompanhe CPU, RAM e status Premium diretamente na interface futurista do painel.</p>
-    </div>
-
+<div class="card">
+<h3>🌐 Rede</h3>
+<p>Otimização e restauração da conexão.</p>
 </div>
 
-</section><section class="section" id="preview"><div class="section-title">
-    <h2>PREVIEW DO PAINEL</h2>
-    <p>Veja o visual futurista do BoostCenter Premium em funcionamento</p>
+<div class="card">
+<h3>🛠 Reparação</h3>
+<p>Ferramentas de manutenção do Windows.</p>
 </div>
 
-<div style="max-width:1100px;margin:auto;">
-
-    <div style="background:linear-gradient(145deg,#09131f,#0c1b28);padding:25px;border-radius:25px;border:1px solid rgba(0,255,170,0.2);box-shadow:0 0 40px rgba(0,255,170,0.12);">
-
-        <img src="https://i.imgur.com/um1TiNZ.png"
-        alt="Preview BoostCenter"
-        style="width:100%;border-radius:18px;border:1px solid rgba(0,255,170,0.15);">
-
-    </div>
-
+<div class="card">
+<h3>🔄 Atualizações</h3>
+<p>O aplicativo verifica automaticamente novas versões.</p>
 </div>
 
-</section><section class="section" id="sistema"><div class="section-title">
-    <h2>SISTEMA INTELIGENTE</h2>
-    <p>Controle online e recursos modernos integrados ao aplicativo</p>
+<div class="card">
+<h3>🔐 Licença Premium</h3>
+<p>Sistema de licença online com funcionamento offline.</p>
 </div>
 
-<div class="info-area">
+</section>
 
-    <div class="info-card">
-        <h3>Licença Online</h3>
+<section class="download">
 
-        <ul>
-            <li>✔ Sistema de ativação Premium</li>
-            <li>✔ Verificação online automática</li>
-            <li>✔ Controle remoto de usuários</li>
-            <li>✔ Validação integrada com GitHub</li>
-            <li>✔ Cache inteligente de autenticação</li>
-        </ul>
-    </div>
+<h2>Download Oficial</h2>
 
-    <div class="info-card">
-        <h3>Atualização Automática</h3>
+<p>
 
-        <ul>
-            <li>✔ Verificação de novas versões</li>
-            <li>✔ Sistema de update Automático direto no app</li>
-            <li>✔ Notificação inteligente</li>
-            <li>✔ Download rápido da nova versão</li>
-            <li>✔ Compatível com PowerShell</li>
-        </ul>
-    </div>
+✔ BoostCenter.exe<br>
+✔ Updater.exe incluso<br>
+✔ Compatível com Windows 10 e 11<br>
+✔ Download sempre atualizado
 
-</div>
+</p>
 
-<div style="
-    display:inline-block;
-    padding:8px 18px;
-    border-radius:999px;
-    background:rgba(0,255,170,0.08);
-    border:1px solid rgba(0,255,170,0.2);
-    color:#00ffaa;
-    font-size:14px;
-    margin-bottom:20px;
-    ">
-        💎 LICENÇA PREMIUM
-    </div>
+<a class="btn"
+href="SEU_LINK_MEDIAFIRE">
+⬇ BAIXAR BOOSTCENTER
+</a>
 
-    <h3 style="
-    font-size:52px;
-    color:#00ffaa;
-    margin-bottom:10px;
-    font-family:'Orbitron',sans-serif;
-    text-shadow:0 0 20px rgba(0,255,170,0.45);
-    ">
-        R$ 15,00
-    </h3>
+</section>
 
-    <p style="
-    color:#bfbfbf;
-    margin-bottom:28px;
-    font-size:15px;
-    ">
-       permanente Pagamento único • Ativação Premium
-    </p>
+<footer>
 
-    <div style="
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    text-align:left;
-    ">
+Desenvolvido por Jefferson Silva 💚
 
-        <div style="
-        background:rgba(255,255,255,0.03);
-        border:1px solid rgba(0,255,170,0.12);
-        padding:14px;
-        border-radius:12px;
-        ">
-            ✔ Atualizações automáticas direto do app
-        </div>
+<br><br>
 
-        <div style="
-        background:rgba(255,255,255,0.03);
-        border:1px solid rgba(0,255,170,0.12);
-        padding:14px;
-        border-radius:12px;
-        ">
-            ✔ Sistema Premium online
-        </div>
+Obrigado por utilizar o BoostCenter.
 
-        <div style="
-        background:rgba(255,255,255,0.03);
-        border:1px solid rgba(0,255,170,0.12);
-        padding:14px;
-        border-radius:12px;
-        ">
-            ✔ Ferramentas avançadas
-        </div>
+</footer>
 
-        <div style="
-        background:rgba(255,255,255,0.03);
-        border:1px solid rgba(0,255,170,0.12);
-        padding:14px;
-        border-radius:12px;
-        ">
-            ✔ Visual gamer futurista
-        </div>
-
-    </div>
-
-</div>
-    
-</section><section class="section" id="comprar"><div class="section-title">
-    <h2>ATIVAÇÃO PREMIUM</h2>
-    <p>Adquira sua licença Premium e desbloqueie todas as funções do BoostCenter</p>
-</div>
-
-    <div style="
-margin:35px auto 25px auto;
-max-width:450px;
-background:linear-gradient(145deg,#0a1722,#102536);
-border:1px solid rgba(0,255,170,0.25);
-border-radius:22px;
-padding:35px;
-box-shadow:0 0 35px rgba(0,255,170,0.15);
-text-align:center;
-">
-
-
-<div class="download-box">
-
-    <h2>COMPRAR KEY PREMIUM</h2>
-
-    <p>
-        Após realizar o pagamento via PIX, envie seu email para receber sua chave de ativação.
-        O envio da licença é feito manualmente.
-    </p>
-
-    <div style="margin-bottom:25px;">
-        <h3 style="color:#00ffaa;margin-bottom:15px;">PIX PARA PAGAMENTO</h3>
-
-        <div style="background:#0b1117;padding:20px;border-radius:12px;border:1px solid rgba(0,255,170,0.2);word-break:break-all;margin-bottom:15px;" id="pixKey">
-            93cc9502-426a-488a-bcc0-239b1f86e12a
-        </div>
-
-        <button onclick="copiarPix()"
-        style="padding:14px 24px;background:#00ffaa;border:none;border-radius:12px;color:#051018;font-weight:700;cursor:pointer;transition:0.3s;">
-            📋 COPIAR PIX
-        </button>
-    </div>
-
-    <div style="margin-bottom:25px;">
-        <input type="email" placeholder="Digite seu email após o pagamento"
-        style="width:100%;padding:16px;background:#0b1117;border:1px solid rgba(0,255,170,0.3);border-radius:12px;color:white;font-size:16px;outline:none;">
-    </div>
-
-    <div style="margin-bottom:25px;">
-        <textarea placeholder="Opcional: informe nome ou comprovante"
-        style="width:100%;height:120px;padding:16px;background:#0b1117;border:1px solid rgba(0,255,170,0.3);border-radius:12px;color:white;font-size:16px;outline:none;resize:none;"></textarea>
-    </div>
-
-    <a href="https://wa.me/12981518844" class="btn" target="_blank">ENVIAR COMPROVANTE</a>
-
-</div>
-
-</section><section class="section"><div class="section-title">
-    <h2>POR QUE ESCOLHER O BOOSTCENTER?</h2>
-    <p>Um painel completo para usuários que querem desempenho e praticidade</p>
-</div>
-
-<div class="features">
-
-    <div class="feature-box">
-        <h3>🚀 Atualizações Automáticas</h3>
-        <p>O aplicativo verifica automaticamente novas versões e mantém o sistema atualizado.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>🔒 Sistema de Licença</h3>
-        <p>Controle Premium online com ativação inteligente e gerenciamento remoto de acesso.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>🖥 Interface Futurista</h3>
-        <p>Visual neon gamer desenvolvido para entregar experiência moderna e organizada.</p>
-    </div>
-
-    <div class="feature-box">
-        <h3>⚡ Alto Desempenho</h3>
-        <p>Ferramentas rápidas e leves desenvolvidas para rodar diretamente no Windows.</p>
-    </div>
-
-</div>
-
-</section><section class="section"><div class="section-title">
-    <h2>FORMAS DE PAGAMENTO</h2>
-    <p>Pagamento rápido e seguro para ativação Premium</p>
-</div>
-
-<div style="display:flex;justify-content:center;gap:25px;flex-wrap:wrap;">
-
-    <div class="feature-box" style="max-width:260px;text-align:center;">
-        <h3>💠 PIX</h3>
-        <p>Pagamento instantâneo com liberação rápida da licença Premium.</p>
-    </div>
-
-    <div class="feature-box" style="max-width:260px;text-align:center;">
-        <h3>📩 Envio por Email</h3>
-        <p>Sua key de ativação é enviada após confirmação do pagamento.</p>
-    </div>
-
-    <div class="feature-box" style="max-width:260px;text-align:center;">
-        <h3>🛡 Suporte</h3>
-        <p>Suporte manual para dúvidas, ativação e ajuda na instalação.</p>
-    </div>
-
-</section><section class="download" id="download"><div class="download-box">
-
-    <h2>BOOSTCENTER PREMIUM</h2>
-
-    <p>
-        Um painel moderno, rápido e otimizado para quem quer melhorar o desempenho do Windows
-        com visual gamer futurista e ferramentas avançadas.
-    </p>
-
-    <a href="https://github.com/jeffersonsites/BoosCenterapp/releases/download/1.6.1/BoostCenter.exe" class="btn" target="_blank">DOWNLOAD DO APP</a>
-
-</div>
-
-</section><footer>
-    © 2026 BoostCenter Premium • Desenvolvido por Jefferson Silva
-</footer><script>
-function copiarPix(){
-
-    const texto = document.getElementById('pixKey').innerText;
-
-    navigator.clipboard.writeText(texto);
-
-    alert('Chave PIX copiada com sucesso!');
-}
-</script></body>
+</body>
 </html>
