@@ -1,282 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BoostCenter - Download Oficial</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoostCenter - Em Manutenção</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
-}
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); 
+            color: #fff; 
+            min-height: 100vh;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 30px 20px;
+        }
 
-body::before{
-content:"";
-position:fixed;
-top:-50%;
-left:-50%;
-width:200%;
-height:200%;
-background:radial-gradient(circle,#00ffaa22 0%,transparent 60%);
-animation:girar 25s linear infinite;
-z-index:-1;
-}
+        .container {
+            width: 100%; 
+            max-width: 650px; /* Mais estreito para a página de manutenção */
+            background: rgba(255, 255, 255, 0.04); 
+            backdrop-filter: blur(12px);
+            border-radius: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            padding: 50px 40px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+            text-align: center;
+        }
 
-@keyframes girar{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
-  
-body{
-background:#07131d;
-color:#fff;
-}
+        header h1 { 
+            font-size: 2.2rem; 
+            font-weight: 600; 
+            color: #00e5ff; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-bottom: 5px;
+        }
 
-header{
-padding:25px;
-text-align:center;
-background:#0d1f2c;
-border-bottom:1px solid #00ffaa44;
-}
+        .maintenance-icon-wrapper {
+            position: relative;
+            margin: 30px 0;
+            display: inline-block;
+        }
 
-header h1{
-color:#00ffaa;
-font-size:42px;
-}
+        .icon-main {
+            font-size: 5rem;
+            color: #ffb86c;
+            filter: drop-shadow(0 0 15px rgba(255, 184, 108, 0.4));
+        }
 
-header p{
-margin-top:10px;
-color:#cfcfcf;
-}
+        .icon-gear {
+            font-size: 2.5rem;
+            color: #a0aec0;
+            position: absolute;
+            bottom: -5px;
+            right: -15px;
+            animation: spin 4s linear infinite;
+        }
 
-.hero{
-max-width:1000px;
-margin:auto;
-padding:70px 20px;
-text-align:center;
-}
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-.version{
-display:inline-block;
-padding:12px 22px;
-background:#10232e;
-border:1px solid #00ffaa55;
-border-radius:30px;
-color:#00ffaa;
-margin-bottom:30px;
-font-weight:bold;
-}
+        .title {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
 
-.hero h2{
-font-size:48px;
-margin-bottom:20px;
-}
+        .description {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
 
-.hero p{
-font-size:18px;
-color:#d0d0d0;
-line-height:1.8;
-margin-bottom:35px;
-}
+        /* Estilo Terminal para dar um ar tecnológico */
+        .terminal-box {
+            background: #111;
+            border: 1px dashed #444;
+            border-radius: 12px;
+            padding: 15px 20px;
+            text-align: left;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #50fa7b;
+            margin-bottom: 30px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
 
-.btn{
-display:inline-block;
-background:#00ffaa;
-color:#07131d;
-padding:18px 45px;
-text-decoration:none;
-font-weight:bold;
-border-radius:12px;
-transition:.3s;
-}
+        .terminal-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 100%;
+            background: linear-gradient(to bottom, rgba(80,250,123,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-.btn:hover{
-transform:scale(1.05);
-}
+        .terminal-line { margin-bottom: 5px; opacity: 0; animation: fadeLine 0.5s forwards; }
+        .terminal-line:nth-child(1) { animation-delay: 0.2s; }
+        .terminal-line:nth-child(2) { animation-delay: 1.0s; }
+        .terminal-line:nth-child(3) { animation-delay: 1.8s; }
+        .terminal-line .cursor { display: inline-block; width: 8px; height: 14px; background: #50fa7b; animation: blink 1s infinite; vertical-align: middle; margin-left: 5px;}
 
-.btn{
-animation:pulse 2s infinite;
-}
+        @keyframes fadeLine { to { opacity: 1; } }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
 
-@keyframes pulse{
-0%{box-shadow:0 0 0 0 rgba(0,255,170,.6);}
-70%{box-shadow:0 0 0 20px rgba(0,255,170,0);}
-100%{box-shadow:0 0 0 0 rgba(0,255,170,0);}
-}
-  
-.cards{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-padding:20px;
-}
+        /* Botões usando o padrão do seu sistema */
+        .btn-wrapper {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-.card{
-background:#10232e;
-padding:25px;
-border-radius:15px;
-border:1px solid #00ffaa33;
-}
+        .action-btn {
+            background: rgba(0, 229, 255, 0.1);
+            color: #00e5ff;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
 
-.card h3{
-color:#00ffaa;
-margin-bottom:15px;
-}
+        .action-btn:hover {
+            background: #00e5ff;
+            color: #111;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+        }
 
-  .card{
-transition:.35s;
-}
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.card:hover{
-transform:translateY(-8px) scale(1.03);
-box-shadow:0 0 25px #00ffaa33;
-}
-
-.download{
-max-width:900px;
-margin:60px auto;
-padding:40px;
-text-align:center;
-background:#10232e;
-border-radius:20px;
-border:1px solid #00ffaa55;
-}
-
-.download h2{
-color:#00ffaa;
-margin-bottom:20px;
-}
-
-.download p{
-margin-bottom:30px;
-color:#d4d4d4;
-}
-
-footer{
-padding:30px;
-text-align:center;
-color:#888;
-margin-top:50px;
-border-top:1px solid #00ffaa22;
-}
-
-img{
-width:100%;
-max-width:900px;
-border-radius:20px;
-margin-top:40px;
-box-shadow:0 0 30px #000;
-}
-</style>
-
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: none;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-rocket"></i> BoostCenter</h1>
+        </header>
 
-<h1>BOOSTCENTER</h1>
+        <div class="maintenance-icon-wrapper">
+            <i class="fa-solid fa-server icon-main"></i>
+            <i class="fa-solid fa-gear icon-gear"></i>
+        </div>
 
-<p>Download Oficial</p>
+        <h2 class="title">Sistema em Manutenção</h2>
+        <p class="description">
+            Estamos realizando melhorias na infraestrutura do servidor para garantir mais velocidade e segurança na gestão de suas licenças. Voltaremos em breve.
+        </p>
 
-</header>
+        <div class="terminal-box">
+            <div class="terminal-line">> root@boostcenter:~$ systemctl status API</div>
+            <div class="terminal-line"><span style="color: #ffb86c;">[WARN]</span> Serviço pausado para atualização...</div>
+            <div class="terminal-line">> Aplicando patches de segurança e otimizando keys<span class="cursor"></span></div>
+        </div>
 
-<section class="hero">
-
-<div class="version">
-Versão 1.7.10 • Atualizada
-</div>
-
-<h2>Software Premium para Windows</h2>
-
-<p>
-
-Otimize, limpe e mantenha seu Windows com apenas alguns cliques.
-
-O BoostCenter reúne ferramentas avançadas para melhorar o desempenho do sistema, jogos e estabilidade.
-
-</p>
-
-<a class="btn"
-href="https://www.mediafire.com/file/bmd2fliuc3ok0ut/BoostCenter.rar/file">
-⬇ BAIXAR AGORA
-</a>
-
-<div style="text-align:center;margin-top:50px;">
-<img src="https://i.imgur.com/t4VCoxN.png"
-style="max-width:900px;width:100%;border-radius:18px;">
-</div>
-
-</section>
-
-<section class="cards">
-
-<div class="card">
-<h3>🧹 Limpeza Extrema</h3>
-<p>Remove arquivos desnecessários do Windows.</p>
-</div>
-
-<div class="card">
-<h3>🎮 Modo Gamer</h3>
-<p>Mais desempenho durante seus jogos.</p>
-</div>
-
-<div class="card">
-<h3>🌐 Rede</h3>
-<p>Otimização e restauração da conexão.</p>
-</div>
-
-<div class="card">
-<h3>🛠 Reparação</h3>
-<p>Ferramentas de manutenção do Windows.</p>
-</div>
-
-<div class="card">
-<h3>🔄 Atualizações</h3>
-<p>O aplicativo verifica automaticamente novas versões.</p>
-</div>
-
-<div class="card">
-<h3>🔐 Licença Premium</h3>
-<p>Sistema de licença online com funcionamento offline.</p>
-</div>
-
-</section>
-
-<section class="download">
-
-<h2>Download Oficial</h2>
-
-<p>
-
-✔ BoostCenter.exe<br>
-✔ Updater.exe incluso<br>
-✔ Compatível com Windows 10 e 11<br>
-✔ Download sempre atualizado
-
-</p>
-
-<a class="btn"
-href="https://www.mediafire.com/file/bmd2fliuc3ok0ut/BoostCenter.rar/file">
-⬇ BAIXAR BOOSTCENTER
-</a>
-
-</section>
-
-<footer>
-
-Desenvolvido por Jefferson Silva 💚
-
-<br><br>
-
-Obrigado por utilizar o BoostCenter.
-
-</footer>
+        <div class="btn-wrapper">
+            <!-- Botão para recarregar a página e ver se já voltou -->
+            <button class="action-btn" onclick="window.location.reload()">
+                <i class="fa-solid fa-rotate"></i> Tentar Novamente
+            </button>
+            
+            <!-- Link para suporte (pode colocar seu WhatsApp ou Telegram no href) -->
+            <a href="https://discord.gg/qV29RbeCd" class="action-btn btn-secondary">
+                <i class="fa-solid fa-headset"></i> Suporte
+            </a>
+        </div>
+    </div>
 
 </body>
 </html>
