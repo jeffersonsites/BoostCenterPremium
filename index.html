@@ -3,196 +3,624 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoostCenter - Em Manutenção</title>
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>BoostCenter | Ferramentas Avançadas para Windows</title>
+    <!-- Ícones Profissionais (FontAwesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Fonte Moderna (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
+        /* Rolagem Suave para as Âncoras */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-dark: #0a0f18;
+            --bg-panel: #131c2b;
+            --bg-card: #1c2638;
+            --primary: #10b981;
+            --primary-hover: #059669;
+            --accent: #eab308;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #2e3c51;
+            --font-sans: 'Inter', sans-serif;
+            --discord-color: #5865F2;
+            --whatsapp-color: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); 
-            color: #fff; 
-            min-height: 100vh;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            padding: 30px 20px;
-        }
-
-        .container {
-            width: 100%; 
-            max-width: 650px; /* Mais estreito para a página de manutenção */
-            background: rgba(255, 255, 255, 0.04); 
-            backdrop-filter: blur(12px);
-            border-radius: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            padding: 50px 40px;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.4);
-            text-align: center;
-        }
-
-        header h1 { 
-            font-size: 2.2rem; 
-            font-weight: 600; 
-            color: #00e5ff; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 15px; 
-            margin-bottom: 5px;
-        }
-
-        .maintenance-icon-wrapper {
-            position: relative;
-            margin: 30px 0;
-            display: inline-block;
-        }
-
-        .icon-main {
-            font-size: 5rem;
-            color: #ffb86c;
-            filter: drop-shadow(0 0 15px rgba(255, 184, 108, 0.4));
-        }
-
-        .icon-gear {
-            font-size: 2.5rem;
-            color: #a0aec0;
-            position: absolute;
-            bottom: -5px;
-            right: -15px;
-            animation: spin 4s linear infinite;
-        }
-
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        .title {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .description {
-            color: #a0aec0;
-            font-size: 0.95rem;
+            font-family: var(--font-sans);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
-            margin-bottom: 25px;
+            overflow-x: hidden;
         }
 
-        /* Estilo Terminal para dar um ar tecnológico */
-        .terminal-box {
-            background: #111;
-            border: 1px dashed #444;
-            border-radius: 12px;
-            padding: 15px 20px;
-            text-align: left;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #50fa7b;
-            margin-bottom: 30px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
+        /* Cabeçalho / Navegação */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 24, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
         }
 
-        .terminal-box::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 100%;
-            background: linear-gradient(to bottom, rgba(80,250,123,0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .terminal-line { margin-bottom: 5px; opacity: 0; animation: fadeLine 0.5s forwards; }
-        .terminal-line:nth-child(1) { animation-delay: 0.2s; }
-        .terminal-line:nth-child(2) { animation-delay: 1.0s; }
-        .terminal-line:nth-child(3) { animation-delay: 1.8s; }
-        .terminal-line .cursor { display: inline-block; width: 8px; height: 14px; background: #50fa7b; animation: blink 1s infinite; vertical-align: middle; margin-left: 5px;}
-
-        @keyframes fadeLine { to { opacity: 1; } }
-        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-
-        /* Botões usando o padrão do seu sistema */
-        .btn-wrapper {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .action-btn {
-            background: rgba(0, 229, 255, 0.1);
-            color: #00e5ff;
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--accent), #ca8a04);
+            color: #000;
+            padding: 0.5rem 1.3rem;
+            border-radius: 6px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            text-decoration: none;
+            gap: 0.5rem;
         }
 
-        .action-btn:hover {
-            background: #00e5ff;
-            color: #111;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: #e2e8f0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Seção Principal (Hero) */
+        .hero {
+            padding: 150px 2rem 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
+        .hero-content h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
             color: #fff;
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-trial {
+            background-color: var(--bg-card);
+            color: var(--accent);
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-trial:hover {
+            background-color: rgba(234, 179, 8, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Container da Imagem Real PNG (Imgur) */
+        .preview-container {
+            position: relative;
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(16, 185, 129, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .preview-container:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .preview-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Seção de Recursos */
+        .features {
+            padding: 5rem 2rem;
+            background-color: #0c121e;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--bg-panel);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Seção "Como Funciona" */
+        .how-it-works {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(16, 185, 129, 0.25);
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+        }
+
+        .step-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Seção Licença / Preço */
+        .pricing {
+            padding: 5rem 2rem;
+            background-color: #0c121e;
+        }
+
+        .pricing-card {
+            max-width: 520px;
+            margin: 0 auto;
+            background-color: var(--bg-panel);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(234, 179, 8, 0.15);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: rgba(234, 179, 8, 0.15);
+            color: var(--accent);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .price-tag {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+        }
+
+        .price-currency {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.7rem 0;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pricing-features li i {
+            color: var(--primary);
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            color: #fff;
+            padding: 0.9rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: opacity 0.3s;
+        }
+
+        .btn-discord {
+            background-color: var(--discord-color);
+            color: #fff;
+            padding: 0.9rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: opacity 0.3s;
+        }
+
+        .btn-whatsapp:hover, .btn-discord:hover {
+            opacity: 0.9;
+        }
+
+        .trial-banner {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .trial-banner a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .trial-banner a:hover {
+            text-decoration: underline;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--bg-dark);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 120px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1><i class="fa-solid fa-rocket"></i> BoostCenter</h1>
-        </header>
-
-        <div class="maintenance-icon-wrapper">
-            <i class="fa-solid fa-server icon-main"></i>
-            <i class="fa-solid fa-gear icon-gear"></i>
-        </div>
-
-        <h2 class="title">Sistema em Manutenção</h2>
-        <p class="description">
-            Estamos realizando melhorias na infraestrutura do servidor para garantir mais velocidade e segurança na gestão de suas licenças. Voltaremos em breve.
-        </p>
-
-        <div class="terminal-box">
-            <div class="terminal-line">> root@boostcenter:~$ systemctl status API</div>
-            <div class="terminal-line"><span style="color: #ffb86c;">[WARN]</span> Serviço pausado para atualização...</div>
-            <div class="terminal-line">> Aplicando patches de segurança e otimizando keys<span class="cursor"></span></div>
-        </div>
-
-        <div class="btn-wrapper">
-            <!-- Botão para recarregar a página e ver se já voltou -->
-            <button class="action-btn" onclick="window.location.reload()">
-                <i class="fa-solid fa-rotate"></i> Tentar Novamente
-            </button>
-            
-            <!-- Link para suporte (pode colocar seu WhatsApp ou Telegram no href) -->
-            <a href="https://discord.com/users/1141021364157939752" class="action-btn btn-secondary">
-                <i class="fa-solid fa-headset"></i> Suporte
+    <!-- Navegação -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-microchip"></i> BoostCenter
+            </a>
+            <ul class="nav-links">
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#licenca">Preços</a></li>
+            </ul>
+            <a href="#licenca" class="btn-premium">
+                <i class="fa-solid fa-crown"></i> Licença R$ 30
             </a>
         </div>
-    </div>
+    </header>
 
-</body>
-</html>
+    <main>
+        <!-- Seção Hero / Apresentação -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Otimização de Nível Avançado para Windows</h1>
+                <p>O BoostCenter é um painel de ferramentas premium e portátil. Sem necessidade de instalação, sistema de atualização automática integrado e validação de licença online em tempo real.</p>
+                
+                <div class="hero-buttons">
+                    <!-- LINK DE DOWNLOAD DO SEU APLICATIVO -->
+                    <a href="https://www.mediafire.com/file/bmd2fliuc3ok0ut/BoostCenter.rar/file" class="btn-primary" id="download-btn" target="_blank">
+                        <i class="fa-solid fa-download"></i> Baixar BoostCenter
+                    </a>
+                    
+                    <!-- BOTÃO PARA SOLICITAR KEY DE TESTE -->
+                    <a href="#licenca" class="btn-trial">
+                        <i class="fa-solid fa-key"></i> Key de Teste
+                    </a>
+                </div>
+            </div>
+
+            <!-- Imagem PNG Real Hospedada no Imgur -->
+            <div class="preview-container">
+                <!-- COLOQUE SEU LINK DO IMGUR AQUI -->
+                <img src="https://i.imgur.com/DVpWFzH.png" alt="Preview do Painel BoostCenter" class="preview-image">
+            </div>
+        </section>
+
+        <!-- Seção de Recursos -->
+        <section id="recursos" class="features">
+            <div class="section-header">
+                <h2 class="section-title">Engenharia de Software Premium</h2>
+                <p class="section-subtitle">Construído do zero para oferecer máxima eficiência e estabilidade ao seu sistema operacional.</p>
+            </div>
+            <div class="features-grid">
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3>100% Portátil</h3>
+                    <p>Não requer instalação. Baixe o pacote comprimido, abra o .exe e use imediatamente em qualquer computador.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </div>
+                    <h3>Atualização Integrada</h3>
+                    <p>O updater nativo já vem zipado com o executável. O aplicativo se mantém atualizado sem downloads extras no navegador.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Licença Online</h3>
+                    <p>Validação remota de credenciais em tempo real via nuvem, garantindo segurança e liberação instantânea de recursos.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <h3>Aceleração & Limpeza</h3>
+                    <p>Ferramentas de limpeza extrema, otimização de ping/rede, reparação do sistema e acionamento de Modo Gamer.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção "Como Funciona" -->
+        <section id="como-funciona" class="how-it-works">
+            <div class="section-header">
+                <h2 class="section-title">Como Funciona</h2>
+                <p class="section-subtitle">Simplicidade e desempenho em apenas 3 passos sem complicações.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">01</span>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h3>Baixe o Pacote</h3>
+                    <p>Você recebe o arquivo comprimido contendo o executável do BoostCenter e o módulo de atualização já integrado.</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">02</span>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h3>Ative ou Teste</h3>
+                    <p>Obtenha uma Key de teste grátis ou compre a licença definitiva de R$ 30 para liberar acesso ilimitado.</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">03</span>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3>Otimize & Atualize</h3>
+                    <p>Utilize as ferramentas de otimização avançada. Sempre que houver nova versão, o auto-updater atualiza tudo sozinho.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Licença / Preço -->
+        <section id="licenca" class="pricing">
+            <div class="section-header">
+                <h2 class="section-title">Adquira sua Licença</h2>
+                <p class="section-subtitle">Garanta seu acesso ao painel de ferramentas avançadas do Windows.</p>
+            </div>
+
+            <div class="pricing-card">
+                <span class="pricing-badge"><i class="fa-solid fa-crown"></i> Acesso Vitalício</span>
+                
+                <div class="price-tag">
+                    <span class="price-currency">R$</span> 30<span style="font-size: 1.5rem; color: var(--text-muted);">,00</span>
+                </div>
+
+                <ul class="pricing-features">
+                    <li><i class="fa-solid fa-check"></i> Executável Portátil (Sem instalação)</li>
+                    <li><i class="fa-solid fa-check"></i> Módulo Updater Automático Incluso</li>
+                    <li><i class="fa-solid fa-check"></i> Sistema de Licença Online Ativa</li>
+                    <li><i class="fa-solid fa-check"></i> Limpeza Extrema & Modo Gamer</li>
+                    <li><i class="fa-solid fa-check"></i> Otimização de Rede & Reparo do Windows</li>
+                    <li><i class="fa-solid fa-check"></i> Suporte Técnico Exclusivo</li>
+                </ul>
+
+                <div class="contact-buttons">
+                    <!-- LINK COMPRA SEU WHATSAPP -->
+                    <a href="https://wa.me/12981518844?text=Olá,%20quero%20comprar%20a%20licença%20do%20BoostCenter%20por%20R$30" class="btn-whatsapp" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Comprar via WhatsApp
+                    </a>
+                    
+                    <!-- LINK COMPRA SEU DISCORD -->
